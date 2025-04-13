@@ -23,10 +23,6 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use("/api/hotels", hotelRoutes);
 app.use("/api/bookings", bookingRoutes);
-app.use("/api/ai", aiRoutes);
-app.use("/api/chatbot", chatbotRoutes);
-app.use("/api/sentiment", sentimentRoutes);
-app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/pricing", pricingRoutes);
 
 app.use("/api/hotels", reviewRoutes);
