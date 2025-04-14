@@ -3,10 +3,16 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const cors = require('cors');
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:3000'];
 app.use(cors({
-    origin: 'http://localhost:3000', // Adjust this based on where your frontend is running
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
   }));
   
 
