@@ -1,18 +1,19 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const hotelSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   name: String,
-  photos: [String],
-  rooms: Number,
-  facilities: [String],
-  location: String,
-  gmbLink: String,
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
-  rooms: {
-    type: Number,
-    required: true,
-  }
-});
+  city: String,
+  address: String,
+  amenities: {
+    ac: Boolean,
+    wifi: Boolean,
+    tv: Boolean,
+    geyser: Boolean,
+    powerBackup: Boolean
+  },
+  images: [String],
+  pricePerDay: Number
+}, { timestamps: true });
 
-module.exports = mongoose.model('Hotel', hotelSchema);
+export default mongoose.model('Hotel', hotelSchema);

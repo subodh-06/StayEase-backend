@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const bookingSchema = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   hotel: { type: mongoose.Schema.Types.ObjectId, ref: 'Hotel' },
-  guest: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  checkInDate: Date,
-  checkOutDate: Date,
-  roomCount: Number,
-  isCheckedIn: { type: Boolean, default: false },
-  isCheckedOut: { type: Boolean, default: false },
-});
+  checkIn: Date,
+  checkOut: Date,
+  rooms: Number,
+  people: Number,
+  guestName: String,
+  guestPhone: String
+}, { timestamps: true });
 
-module.exports = mongoose.model('Booking', bookingSchema);
+export default mongoose.model('Booking', bookingSchema);
